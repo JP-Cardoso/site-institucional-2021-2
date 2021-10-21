@@ -1,3 +1,5 @@
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 /*
     Cor primária: #F9D84D
     Cor primária clara: #FFEC9C
@@ -7,6 +9,7 @@
     Cor do texto: #cccccc
 */
 
+
 /* variáveis*/
 :root {
     --cor-prin:  #F9D84D;
@@ -15,18 +18,20 @@
     --cor-secun-clara: #FD9CA3;
     --cor-fundo: #333333;
     --cor-fundo-clara: #555555;
-    --cor-texto: #cccccc;
+    --cor-texto: #eeeeee;
+    --fonte-texto: 'IBM Plex Sans', sans-serif;
+    --fonte-titulo: 'Playfair Display', serif;
 }
 /*** CSS reset ***************************/
 /* O asterisco no css, se aplica a todo o arquivo html*/
 *{
-    
-    font-family: calibri,arial,sans-serif;
+    /* Todos os elementos */
+    font-family: var(--fonte-texto);
     padding: 0;
     margin: 0;
     box-sizing: content-box; /* A borda faz parte das dimensões do elemento */
-    background-color: var(--cor-fundo);
-    color: var(--cor-texto);
+   /* background-color: var(--cor-fundo);
+    color: var(--cor-texto);*/
 }
 
 /*******************************************/
@@ -56,14 +61,45 @@ footer{
     background-color: var(--cor-fundo-clara);
     min-height: 50px; /* Altura mínima*/
 }
-nav{
+#menu-principal{
     display: flex; /* São regras que podem ser add no css e no html*/
     justify-content: center; /* Centralização horizontal*/
     align-items: center; /* Centralização vertical*/
     background-color: var(--cor-secun);
     min-height: 25px; /* Altura mínima*/
     width: 100%;
-    margin: 5px;
+    
+}
+#menu-principal ul {
+    /* Afeta o <ul> dentro do menu pricipal */
+    list-style: none; /* Tira a decoração dos itens da lista */
+    display: flex; /* Container flex -  Todos os itens filhos na horizontal por padrão */
+}
+#menu-principal ul li{
+    height: 36px;
+    margin: 0 10px; /* 0 topo, fundo: 10px esquerda e direita */
+    display: flex;    
+    
+}
+#menu-principal ul li a{
+   /* display: inline-block;  Exibe como bloco em linha */
+    font-family: var(--fonte-titulo);
+    height: 36px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    color: var(--cor-texto);
+    text-decoration: none; /* Sem sublinhado */
+    background-color: var(--cor-secun);
+    transition: 300ms; /* Afeta a velocidade dos esfeitos do hover */
+}
+/* Quando passa o mouse sobre o link do menu */
+#menu-principal ul li a:hover{
+    /* Filtro que escurece a cor do item (cor de frente + cor de fundo
+        bringhtness < 1: escurece
+        bringhtness > 1: clareia    
+    */
+    filter: brightness(1.2);
 }
 section{
     display: flex; /* São regras que podem ser add no css e no html*/
