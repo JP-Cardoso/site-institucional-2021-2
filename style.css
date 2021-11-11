@@ -44,14 +44,41 @@ html {
 }
 header{
     display: flex; /* São regras que podem ser add no css e no html*/
-    justify-content: center; /* Centralização horizontal*/
+    justify-content: space-between; /* Centralização horizontal*/
     align-items: center; /* Centralização vertical*/
     background-color: var(--cor-prin);
     min-height: 50px; /* Altura mínima*/
     flex-wrap: wrap; /* Força a quebra de linhas entre elementos flex */
 }
+/* nav #social*/
+#social ul{
+    list-style: none;
+    display: flex;
+    margin: 20px;
+}
+#social ul li a{
+    height: 40px;
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+    color: var(--cor-fundo);
+    text-decoration: none;
+}
+#social ul li img{
+    width: 40px;
+    filter: brightness(0.225) /*Clareia 0 =< >= 1 Escurece*/;
+}
+#social ul li a span{
+    margin-left: 6px;
+   
+}
+#social ul li a:hover span{
+    visibility: visible;
+    width: auto
+}
 #img-logo{
     background-color: transparent;
+    margin: 20px;
 }
 main{
     display: flex; /* São regras que podem ser add no css e no html*/
@@ -138,8 +165,8 @@ section > h1 {/* Sinal de > indica que serão apenas atingidos apenas os H1 filh
     font-size: 2rem;
     text-shadow: -1px -1px 1px rgba(255, 255, 255, 0.4);
 }
-/* Regra para os titulos h1 que estao dentro dos articles */
-article > h1{
+/* Regra para os titulos h1 que estao dentro dos articles do section */
+section > article > h1{
     text-align: right;
     width: 100%;
     color: var(--cor-texto);
@@ -194,13 +221,35 @@ article > h1{
 
 aside{
     display: flex; /* São regras que podem ser add no css e no html*/
-    justify-content: center; /* Centralização horizontal*/
-    align-items: center; /* Centralização vertical*/
-    border: 1px dashed dimgray;
-    background-color: lightgray; 
-    width: 25%;
-    margin: 5px;
+    justify-content: left; /* Alinhamento inicial*/
+    align-items: left; /* Alinhamento vertical*/
+    background-color: var(--cor-fundo);
+    width:  25%;
+    margin: 20px;
+    border-radius: 16px;
+    padding: 16px;
+    color: var(--cor-texto);
+    font-size: 1.2rem;
+    flex-direction: column;
 }
+/* Links que estão dentro do aside*/
+aside a{
+    color: var(--cor-prin-clara);
+    text-decoration: none; /* Tira o sumblinhado do link*/
+}
+aside a:hover{
+    color: var(--cor-prin);
+    text-decoration: underline;
+}
+/* Articles que estão dentro do aside*/
+aside article{
+    text-align: center;
+    margin: 50px 0;
+    padding: 30px 20px;
+    border-bottom: 3px groove var(--cor-fundo-clara);
+    border-radius: 8px;
+}
+
 article{
     display: flex; /* São regras que podem ser add no css e no html*/
     justify-content: center; /* Centralização horizontal*/
@@ -221,5 +270,60 @@ article{
     }
     section, aside{
         width: 100%;
+    }
+}
+/********************************
+    Regras de Responsividade
+********************************/
+
+
+/*Computadores com tela pequenos*/
+@media (max-width: 1200px) {
+    body{
+        filter: hue-rotate(45deg)
+    }
+    /* Esconde o texto das redes sociais */
+    #social ul li a span{
+        display: none; /* Não preserva o espaço do elemento */
+    }
+    /* Ajusta o flex-direction do main para column para passar o aside para baixo*/    
+    main {
+        flex-direction: column;
+    }
+
+    /* Section e aside passam a ter largura de 100% */
+    section, aside {
+        width: calc(100% - 40px);
+    }
+    /* Os anúncios do article ficam na horizontal*/
+    aside{
+        flex-direction: row;
+        /* FAz com que os articles fiquem com a mesma altura */
+        align-items: stretch;
+    }
+    aside article{
+        margin: 0 30px;
+    }
+}
+
+
+/* Dispositivos (tablets) */
+@media (max-width: 992px) {
+    body{
+        filter: hue-rotate(90deg)
+    }
+}
+
+/* Dispositivos (celulares) média */
+@media (max-width: 768px){
+    body{
+        filter: hue-rotate(135deg)
+    }
+}
+
+/* Dispositivos (celulares) pequenos */
+@media (max-width: 576px) {
+    body{
+        filter: hue-rotate(180deg)
     }
 }
